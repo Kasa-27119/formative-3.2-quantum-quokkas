@@ -1,6 +1,7 @@
 import React from 'react'
 
 const SignUp = () => {
+    // submit form handler
     const handleSubmit = async (e) => {
         // prevent page refresh
         e.preventDefault()
