@@ -12,7 +12,7 @@ const getProjects = async (req, res) => {
 
 // CREATE project
 const createProject = async (req, res) => {
-    const {name, imageURL, author, url, description, user_id} = req.body
+    const {name, imageURL, author, url, description} = req.body
 
     // adding doc to db
     try {
@@ -22,7 +22,6 @@ const createProject = async (req, res) => {
             author, 
             url, 
             description, 
-            user_id
         })
         res.status(200).json(project)
     }
