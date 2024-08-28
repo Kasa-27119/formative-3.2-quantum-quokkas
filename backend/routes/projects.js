@@ -7,12 +7,14 @@ const router = express.Router();
 // controller import
 const {
     getProjects,
-    createProject
+    createProject,
+    deleteProject
 } = require('../controllers/projectController');
 
 // http request
 router.get('/', getProjects);
 router.post('/', createProject);
+router.delete('/:id', deleteProject);
 
 // module export
 module.exports = router;
