@@ -30,8 +30,28 @@ const createProject = async (req, res) => {
     }
 }
 
+// DELETE project
+const deleteProject = async (req, res) => {
+    const {id} = req.params
+
+    // if project id ISN'T valid
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'No such project'})
+    }
+
+    const project = await Project.findOneAndDelete({_id: id})
+
+    // if there is no project
+    if (!project) {
+        return res.status(404).json({error: 'No such project'})
+    }
+
+    res.status(200).json(project)
+}
+
 // export functions
 module.exports = {
     getProjects,
-    createProject
+    createProject, 
+    deleteProject
 }
