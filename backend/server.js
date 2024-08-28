@@ -6,6 +6,21 @@ const express = require('express')
 const app = express()
 const port = 4000
 
+// import routes
+const projectsRoutes = require('./routes/projects')
+
+// use json with express
+app.use(express.json());
+
+// log out path + method of each request
+app.use((req, res, next) => {
+    console.log(req.path, req.method);
+    next();
+});
+
+// attach routes to app
+app.use('/api/projects/', projectsRoutes);
+
 // mongoose & credentials
 const mongoose = require('mongoose')
 const mongoUsername = process.env.MONGO_DB_USERNAME
