@@ -7,11 +7,11 @@ export const projectsReducer = (state, action) => {
     switch (action.type) {
         case 'SET_PROJECTS':
             return {
-                workouts: action.payload 
+                projects: action.payload 
             }
         case 'CREATE_PROJECTS':
             return {
-                workouts: action.payload 
+                projects: action.payload 
             }
         default:
             return state
