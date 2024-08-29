@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
+// component imports
+import ProjectDetails from '../components/ProjectDetails';
+
 /** CONTENTS OF HOME.JSX
  * Imports of pages and links (1-2)
  * Home Functionality (11 - *)
