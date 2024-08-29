@@ -8,6 +8,7 @@ const port = 4000
 
 // import routes
 const projectsRoutes = require('./routes/projects')
+const userRoutes = require('./routes/user')
 
 // use json with express
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 
 // attach routes to app
 app.use('/api/projects/', projectsRoutes);
+app.use('/api/user', userRoutes)
 
 // mongoose & credentials
 const mongoose = require('mongoose')
