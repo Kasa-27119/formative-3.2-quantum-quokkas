@@ -56,7 +56,7 @@ const Home = () => {
                             <ProjectDetails key={project._id} project={project}/>
                         )
                     }
-                })) : (workouts && workout.map((workout) => {
+                })) : (project && project.map((project) => {
                     return (
                         <ProjectDetails key={project._id} project={project}/>
                     )
