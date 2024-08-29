@@ -21,16 +21,13 @@ import Footer from './components/Footer'
 const App = () => {
 
   return (
-    /**COMMENTS / UPDATES /TODO
-     * Not fully done html fucntionality for app.jsx 
-     * as we will need to add in user reltated functionailty once its added to previous files
-     *  */ 
+
     <div className='app'>
       <BrowserRouter>
         <Navbar/>
         <div className='pages'>
           <Routes>
-            <Home/>
+            <Route path='/' element={<Home/>}/>
           </Routes>
         </div>
       </BrowserRouter>
