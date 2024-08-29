@@ -1,5 +1,7 @@
 // Imports
 import { Link } from 'react-router-dom'
+import { useLogout } from '../hooks/useLogout'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 /** CONTENTS IN NAVBAR.JSX
  * imports (2)
@@ -39,7 +41,7 @@ const Navbar = () => {
 
                         <div>
                             <span className='userEmail'>
-                                {getEmailCharacterBeforeAtSymbol
+                                {getEmailCharactersBeforeAtSymbol
                                 (user.email)}</span>
                                 <button onClick={handleClick} className='logoutButton'>Logout</button>
                         </div>
