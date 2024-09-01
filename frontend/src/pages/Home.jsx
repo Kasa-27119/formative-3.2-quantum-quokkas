@@ -4,6 +4,7 @@ import { useProjectsContext } from '../hooks/useProjectContext'
 
 // component imports
 import ProjectDetails from '../components/ProjectDetails';
+import ProjectForm from '../components/ProjectForm';
 
 /** CONTENTS OF HOME.JSX
  * Imports of pages and links (1-2)
@@ -55,6 +56,7 @@ const Home = () => {
                     </p>
                 </div>
             </div>
+            <ProjectForm></ProjectForm>
             <div className='projects'>
                 <button onClick={handleMyProjects} className='filter-button'>
                     My Projects
