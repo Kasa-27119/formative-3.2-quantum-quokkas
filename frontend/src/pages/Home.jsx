@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useProjectsContext } from '../hooks/useProjectContext'
 
 // component imports
 import ProjectDetails from '../components/ProjectDetails';
@@ -40,7 +41,20 @@ const Home = () => {
 
     // Component to Display and Filter Projects
     return (
-        <div className='home'>
+        <div className='home'> 
+            <div className='home-about'>
+                <h1>Main Header</h1>
+                <div className='home-about-img'></div>
+                <div className='home-about-description'>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque beatae placeat numquam dolorem mollitia impedit, provident laudantium incidunt minus ad nisi magnam, labore facilis harum temporibus natus aliquam ducimus quae?
+                    In non labore perferendis, inventore sapiente velit et dolores cupiditate minima dignissimos. Ullam unde officia quos laudantium veniam, quisquam, voluptatem eveniet, sunt consectetur ratione dolorum aliquid ducimus! Eaque, facilis optio?
+                    Adipisci atque suscipit laboriosam, sit possimus, distinctio corrupti, minus alias nemo rerum id perferendis veniam. Consectetur, dolore fugiat. Excepturi, veniam. Suscipit dolores iste impedit ullam, hic quisquam animi obcaecati praesentium.
+                    </p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque beatae placeat numquam dolorem mollitia impedit, provident laudantium incidunt minus ad nisi magnam, labore facilis harum temporibus natus aliquam ducimus quae?
+                    In non labore perferendis, inventore sapiente velit et dolores cupiditate minima dignissimos. Ullam unde officia quos laudantium veniam, quisquam, voluptatem eveniet, sunt consectetur ratione dolorum aliquid ducimus! Eaque, facilis optio?
+                    Adipisci atque suscipit laboriosam, sit possimus, distinctio corrupti, minus alias nemo rerum id perferendis veniam. Consectetur, dolore fugiat. Excepturi, veniam. Suscipit dolores iste impedit ullam, hic quisquam animi obcaecati praesentium.
+                    </p>
+                </div>
+            </div>
             <div className='projects'>
                 <button onClick={handleMyProjects} className='filter-button'>
                     My Projects
@@ -56,7 +70,7 @@ const Home = () => {
                             <ProjectDetails key={project._id} project={project}/>
                         )
                     }
-                })) : (project && project.map((project) => {
+                })) : (projects && projects.map((project) => {
                     return (
                         <ProjectDetails key={project._id} project={project}/>
                     )
