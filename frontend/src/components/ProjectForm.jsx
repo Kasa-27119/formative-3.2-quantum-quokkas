@@ -30,6 +30,9 @@ const ProjectForm = () => {
        <label className='form-label'>Upload Project Image</label>
        <input type="file" accept="image/*"/>
 
+       <label className='form-label'>Description</label>
+       <input type="text" />
+
        <button>Create Project</button>
        <div className='error'>Error</div>
    </form>
