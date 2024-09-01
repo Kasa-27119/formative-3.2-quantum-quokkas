@@ -1,5 +1,7 @@
 // require dotenv
 require('dotenv').config()
+// cors
+const cors = require('cors')
 
 // initial server setup
 const express = require('express')
@@ -12,6 +14,9 @@ const userRoutes = require('./routes/user')
 
 // use json with express
 app.use(express.json());
+
+// allowing cross origin
+app.use(cors())
 
 // log out path + method of each request
 app.use((req, res, next) => {
