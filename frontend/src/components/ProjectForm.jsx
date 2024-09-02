@@ -19,7 +19,7 @@ const ProjectForm = () => {
         {/* create project form */}
         <form className='project-form' onSubmit={handleSubmit}>
 
-            <div classname='project-form-container'>
+            <div className='project-form-container'>
 
                 <div className='project-form-input-container'>
                     <label className='form-label'>Project Name</label>
