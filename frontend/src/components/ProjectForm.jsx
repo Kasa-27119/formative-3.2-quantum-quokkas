@@ -8,7 +8,7 @@ const ProjectForm = () => {
     const [name, setName] = useState('');
     const [author, setAuthor] = useState('');
     const [url, setURL] = useState('');
-    const [imageURL, setImageURL] = useState('')
+    const [imageURL, setImageURL] = useState(null)
     const [description, setDescription] = useState('');
     const [error, setError] = useState(null)
 
@@ -19,21 +19,30 @@ const ProjectForm = () => {
         const user = JSON.parse(localStorage.getItem('user'));
         const user_id = user.email;
 
-        const project = {
-            name,
-            imageURL,
-            author,
-            url,
-            description,
-            user_id
-        };
+        // const project = {
+        //     name,
+        //     imageURL,
+        //     author,
+        //     url,
+        //     description,
+        //     user_id
+        // };
+
+        const formData = new  FormData()
+        formData.append('user_id', user_id)
+        formData.append('name', name)
+        formData.append('author', author)
+        formData.append('url', url)
+        formData.append('imageURL', imageURL)
+        formData.append('description', description)
 
         // try/catch to send project json data to server
         try {
 
             const response = await axios.post(`${baseURL}/api/projects/`, project, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/json'
+                    'Content-Type': 'multipart/form-data'
                 }
             })
 
@@ -46,7 +55,10 @@ const ProjectForm = () => {
             setError(null)
             console.log('new project added', response.data)
 
+            dispatch({type: 'CREATE_PROJECTS', payload: response.data})
+
         } catch (error) {
+            console.error(error)
             setError(error.message)
         }
     };
@@ -81,8 +93,8 @@ const ProjectForm = () => {
                 <label className='form-label'>Upload Project Image</label>
                 <input 
                 type="file"
-                onChange={(e) => setImageURL(e.target.value)}
-                value={imageURL} accept="image/*"/>
+                onChange={(e) => setImageURL(e.target.files[0])}
+                accept="image/*"/>
                 <label className='form-label'>Description</label>
                 <input 
                 type="text"

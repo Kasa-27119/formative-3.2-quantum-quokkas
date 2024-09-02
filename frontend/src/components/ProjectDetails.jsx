@@ -74,35 +74,6 @@ const ProjectDetails = ({project}) => {
     navigate(path)
   }
 
-  // // submit edit handler
-  // const submitEditHandler = async () => {
-  //   const updatedProject = {
-  //     name: editName,
-  //     imageURL: editImageURL,
-  //     url: editURL,
-  //     description: editDescription
-  //   }
-
-  //   // try and catch
-  //   try {
-  //     const response = await axios.patch(
-  //       `http://localhost:4000/api/projects/${project._id}`,
-  //       updatedProject
-  //     )
-
-  //     const updatedData = response.data
-
-  //     if (response.status === 200) {
-  //       console.log(response)
-  //       console.log(updatedData)
-  //       dispatch({type: 'UPDATE_PROJECT', payload: updatedData})
-  //       setIsEditing(false)
-  //     }
-  //   } catch (error) {
-  //     console.error('error updating the project', error)
-  //   }
-  // }
-
   const handleDelete = async () => {
     const response = await axios.delete(`${baseURL}/api/projects/${project._id}`)
     const json = await response.data
@@ -150,6 +121,10 @@ const ProjectDetails = ({project}) => {
         <>
           {/* original render */}
           <div>
+            {/* project image */}
+            {project.image && (
+              <img className='project-image' src={`${baseURL}/public/uploads/${project.image}`} alt={project.title} />
+            )}
             {/* project details */}
             <h4>{project.name}</h4>
             <h6>{project.author}</h6>
