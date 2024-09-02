@@ -1,75 +1,122 @@
-import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
+import { useProjectsContext } from '../hooks/useProjectContext'
+
+const baseURL = import.meta.env.VITE_API_BASE_URL
+
 const ProjectDetails = ({project}) => {
+  const {dispatch} = useProjectsContext();
+  const navigate = useNavigate();
 
   // state for editing 
-  const [isEditing, setIsEditing] = useState(false)
+  const [isEditing, setIsEditing] = useState(false);
 
   // state for editing form inputs
-  const [editName, setEditName] = useState(project.name)
-  const [editURL, setEditURL] = useState(project.url)
-  const [editDescription, setEditDescription] = useState(project.description)
-  const [editImageURL, setEditImageURL] = useState(project.imageURL)
+  const [editName, setEditName] = useState(project.name);
+  const [editAuthor, setEditAuthor] = useState(project.author);
+  const [editURL, setEditURL] = useState(project.url);
+  const [editDescription, setEditDescription] = useState(project.description);
+  const [editImageURL, setEditImageURL] = useState(project.imageURL);
+
+  const user = JSON.parse(localStorage.getItem('user'));
+  const user_id = user ? user.email : null;
 
   // edit project handler
   const handleEdit = () => {
     setIsEditing(true)
   }
 
-  // cancel edit handler
-  const handleCancelEdit = () => {
-    setEditName(project.name)
-    setEditURL(project.url)
-    setEditDescription(project.description)
-    setEditImageURL(project.imageURL)
-  }
-
-  // submit edit handler
-  const submitEditHandler = async () => {
-    const updatedProject = {
-      name: editName,
-      imageURL: editImageURL,
-      url: editURL,
-      description: editDescription
-    }
-
-    // try and catch
+  // submit edit
+  const handleSubmitEdit = async () => {
+    const formData = new FormData();
+    formData.append('name', editName);
+    formData.append('author', editAuthor);
+    formData.append('url', editURL);
+    formData.append('imageURL', editImageURL); // Ensure backend can handle this
+    formData.append('description', editDescription);
+    
     try {
       const response = await axios.patch(
-        `http://localhost:4000/api/projects/${project._id}`,
-        updatedProject
-      )
-
-      const updatedData = response.data
-
+        `${baseURL}/api/projects/${project._id}`,
+        formData, // Pass the FormData object
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+      const updatedData = response.data;
       if (response.status === 200) {
-        console.log(response)
-        console.log(updatedData)
-        dispatch({type: 'UPDATE_PROJECT', payload: updatedData})
-        setIsEditing(false)
+        console.log(response);
+        console.log(updatedData);
+        dispatch({ type: 'UPDATE_PROJECT', payload: updatedData });
+        setIsEditing(false);
       }
     } catch (error) {
-      console.error('error updating the project', error)
+      console.log('Error updating project:', error);
     }
+  };
+
+  // cancel edit handler
+  const handleCancelEdit = () => {
+    setEditName(project.name);
+    setEditAuthor(project.author);
+    setEditURL(project.url);
+    setEditDescription(project.description);
+    setEditImageURL(project.imageURL);
+    setIsEditing(false);
   }
+
+  const handleNavigate = () => {
+    let path = `/${project._id}`
+    navigate(path)
+  }
+
+  // // submit edit handler
+  // const submitEditHandler = async () => {
+  //   const updatedProject = {
+  //     name: editName,
+  //     imageURL: editImageURL,
+  //     url: editURL,
+  //     description: editDescription
+  //   }
+
+  //   // try and catch
+  //   try {
+  //     const response = await axios.patch(
+  //       `http://localhost:4000/api/projects/${project._id}`,
+  //       updatedProject
+  //     )
+
+  //     const updatedData = response.data
+
+  //     if (response.status === 200) {
+  //       console.log(response)
+  //       console.log(updatedData)
+  //       dispatch({type: 'UPDATE_PROJECT', payload: updatedData})
+  //       setIsEditing(false)
+  //     }
+  //   } catch (error) {
+  //     console.error('error updating the project', error)
+  //   }
+  // }
 
   const handleDelete = async () => {
     const response = await axios.delete(`${baseURL}/api/projects/${project._id}`)
     const json = await response.data
     if (response.status === 200) {
       console.log(json)
-      dispatch({type: 'DELETE_WORKOUT', payload: json})
+      dispatch({type: 'DELETE_PROJECT', payload: json})
     }
   }
 
   return (
     <div className='project-details'>
       {/* conditional render - IS editing */}
+      {/* edit project form */}
       {isEditing ? (
-        <>
-          {/* edit project form */}
           <div className='edit-modal'>
             <label className='form-label'>Edit Project Name</label>
             <input type="text" 
@@ -99,12 +146,7 @@ const ProjectDetails = ({project}) => {
             <button onClick={handleSubmitEdit}>Save Edit</button>
             <button onClick={handleCancelEdit}>Cancel Edit</button>
           </div>
-        </>
-      ) 
-      
-      : 
-      
-      (
+      ) : (
         <>
           {/* original render */}
           <div>
@@ -113,9 +155,14 @@ const ProjectDetails = ({project}) => {
             <h6>{project.author}</h6>
             <p>{project.createdAt}</p>
             <p><strong>Created by: </strong>{project.user_id}</p>
-            <span className='edit' onClick={handleEdit}>Edit</span>
-            <span className='delete' onClick={handleDelete}>Delete</span>
+            <button onClick={handleNavigate}>See more</button>
           </div>
+            {project.user_id === user_id && (
+              <>
+              <span className='edit' onClick={handleEdit}>Edit</span>
+              <span className='delete' onClick={handleDelete}>Delete</span>
+              </>
+            )}
         </>
       )}
     </div>
