@@ -55,6 +55,15 @@ const ProjectDetails = ({project}) => {
     }
   }
 
+  const handleDelete = async () => {
+    const response = await axios.delete(`${baseURL}/api/projects/${project._id}`)
+    const json = await response.data
+    if (response.status === 200) {
+      console.log(json)
+      dispatch({type: 'DELETE_WORKOUT', payload: json})
+    }
+  }
+
   return (
     <div className='project-details'>
       {/* conditional render - IS editing */}
@@ -103,9 +112,9 @@ const ProjectDetails = ({project}) => {
             <h4>{project.name}</h4>
             <h6>{project.author}</h6>
             <p>{project.createdAt}</p>
-
-            {/* <span className='edit' onClick={handleEdit}>Edit</span> */}
-            {/* <span className='edit' onClick={handleDelete}>Delete</span> */}
+            <p><strong>Created by: </strong>{project.user_id}</p>
+            <span className='edit' onClick={handleEdit}>Edit</span>
+            <span className='delete' onClick={handleDelete}>Delete</span>
           </div>
         </>
       )}
