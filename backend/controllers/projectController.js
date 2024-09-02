@@ -12,13 +12,15 @@ const getProjects = async (req, res) => {
 
 // CREATE project
 const createProject = async (req, res) => {
-    const {name, imageURL, author, url, description, user_id} = req.body
+    const {name, author, url, description, user_id} = req.body
+
+    const imageFilename = req.file ? req.file.filename : null;
 
     // adding doc to db
     try {
         const project = await Project.create({
             name, 
-            imageURL, 
+            image: imageFilename,
             author, 
             url, 
             description,

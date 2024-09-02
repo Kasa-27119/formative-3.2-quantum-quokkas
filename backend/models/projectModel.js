@@ -7,9 +7,9 @@ const projectSchema = new Schema({
         type: String,
         required: true
     },
-    imageURL: {
+    image: {
         type: String,
-        required: true
+        default: null
     },
     author: {
         type: String,

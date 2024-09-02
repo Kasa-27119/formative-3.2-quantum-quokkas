@@ -26,7 +26,8 @@ app.use((req, res, next) => {
 
 // attach routes to app
 app.use('/api/projects/', projectsRoutes);
-app.use('/api/user', userRoutes)
+app.use('/api/user', userRoutes);
+app.use('/public/uploads', express.static('public/uploads'));
 
 // mongoose & credentials
 const mongoose = require('mongoose')
