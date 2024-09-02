@@ -1,6 +1,7 @@
 /* APP.CSS CONTENTS Where things are roughly
-* Global reset 5 - 10
-* 
+* Global reset 5 - 11
+* Nav 16 - 22
+* Project Form 26 - 57
 */
 
 /* Global Reset */
@@ -9,6 +10,17 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* Nav CSS Start */
+.container {
+    /* Layout */
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+}
+/* Nav CSS End */
 
 /* Project Form CSS Start */
 .create-project-container {
@@ -23,16 +35,19 @@
     background-color: pink;
 
     .project-form {
+        /* Layout */
         display: flex;
         flex-direction: column;
         gap: 20px;
 
         .project-form-container {
+            /* Layout */
             display: flex;
             flex-direction: row;
             gap: 50px;
 
             .project-form-input-container {
+                /* Layout */
                 display: flex;
                 flex-direction: column;
                 gap: 5px;
@@ -40,3 +55,5 @@
         }
     }
 }
+/* Project Form CSS End */
+
