@@ -1,5 +1,7 @@
 /* APP.CSS CONTENTS Where things are roughly
-* Global reset 5 - 11
+* Google Font Imports 11 - 17
+* Global reset 19 - 23
+* Variables 26 - 47
 * Nav 16 - 22
 * Home 26 - 51
 * About 30 - 51
@@ -9,11 +11,40 @@
 * Sign Up Page 125 - 147
 */
 
+/* Google Font Imports */
+/* Playfair Display SC Font - Header */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+/* Monserrat - Subheader */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/* Open Sans  - Body Text */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 /* Global Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+    /* Colour Variables */
+    /* Primary for Background and font colours with dark backgrounds */
+    --primaryColor: #FFFAE3;
+    /* Secondary for things like navbar and chunks space */
+    --secondaryColor: #F7567C;
+    --primaryButtonColor: #5D5768;
+    --secondaryButtonColor: #99E1D9;
+    /* Font Variables */
+    /* Header Variables */
+    --headerFontFamily: "Playfair Display SC", serif;
+    --headerFontWeight: 400;
+    /* SubHeader Variables */
+    --subHeaderFontFamily: "Montserrat", sans-serif;
+    --subHeaderFontWeight: 400;
+    /* Body Text Variables */
+    --bodyFontFamily: "Open Sans", sans-serif;
+    --bodyFontWeight: 400;
 }
 
 /* Nav CSS Start */
