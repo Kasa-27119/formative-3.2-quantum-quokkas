@@ -1,5 +1,6 @@
 // Imports
 import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
+import { useAuthContext } from './hooks/useAuthContext';
 import './App.css'
 
 // Page Imports
@@ -19,6 +20,7 @@ import Footer from './components/Footer'
  */
 
 const App = () => {
+  const {user} = useAuthContext();
 
   return (
 
@@ -27,14 +29,14 @@ const App = () => {
         <Navbar/>
         <div className='pages'>
           <Routes>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/signup' element={<SignUp/>}/>
+            <Route path='/' element={user ? <Home/> : <Navigate to='/login'/>}/>
+            <Route path='/login' element={!user ? <Login/> : <Navigate to='/'/>}/>
+            <Route path='/signup' element={!user ? <SignUp/> : <Navigate to='/'/>}/>
+            <Route path="/:id" element={user ? <SingleWorkout/> : <Navigate to="/login"/>}/>
           </Routes>
         </div>
         <Footer/>
       </BrowserRouter>
-
     </div>
   )
 }
