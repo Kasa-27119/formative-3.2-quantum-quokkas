@@ -70,10 +70,34 @@ const getProject = async (req, res) => {
     res.status(200).json(project)
 }
 
+// UPDATE single project
+const updateProject = async (req, res) => {
+    const {id} = req.params
+
+    // check if the project id is a valid MongoDB id
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).json({error: 'no such project'})
+    }
+
+    // find project and change what it receives
+    const project = await Project.findOneAndUpdate({_id: id}, {
+        ...req.body
+    }, {new: true})
+
+    // check if is a valid project id
+    if (!project) {
+        return res.status(404).json({error: 'no such project'})
+    }
+
+    // return the updated project
+    res.status(200).json(project)
+}
+
 // export functions
 module.exports = {
     getProjects,
     getProject,
     createProject, 
-    deleteProject
+    deleteProject,
+    updateProject
 }

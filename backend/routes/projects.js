@@ -9,7 +9,8 @@ const {
     getProjects,
     getProject,
     createProject,
-    deleteProject
+    deleteProject,
+    updateProject
 } = require('../controllers/projectController');
 
 // http request
@@ -17,6 +18,7 @@ router.get('/', getProjects);
 router.get('/:id', getProject)
 router.post('/', createProject);
 router.delete('/:id', deleteProject);
+router.patch('/:id', updateProject)
 
 // module export
 module.exports = router;
