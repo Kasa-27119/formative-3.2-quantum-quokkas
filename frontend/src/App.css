@@ -88,3 +88,10 @@
 }
 /* Project Form CSS End */
 
+/* Project details CSS Start */
+.project-details-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        padding: 25px 30px;
+        gap: 3em;
+}
