@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
+import axios from 'axios'
+
+const baseURL = import.meta.env.VITE_API_BASE_URL
 
 const ProjectForm = () => {
     // State to manage form input values
     const [name, setName] = useState('');
     const [author, setAuthor] = useState('');
-    const [url, setUrl] = useState('');
+    const [url, setURL] = useState('');
+    const [imageURL, setImageURL] = useState('')
     const [description, setDescription] = useState('');
+    const [error, setError] = useState(null)
 
     // submit form handler
     const handleSubmit = async (e) => {
@@ -16,47 +21,79 @@ const ProjectForm = () => {
 
         const project = {
             name,
+            imageURL,
             author,
             url,
             description,
             user_id
         };
 
-        console.log(project);
-        // Here, you would typically send 'project' to your backend server
+        // try/catch to send project json data to server
+        try {
+
+            const response = await axios.post(`${baseURL}/api/projects/`, project, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+
+            // reset field values if successful
+            setName('')
+            setAuthor('')
+            setURL('')
+            setImageURL('')
+            setDescription('')
+            setError(null)
+            console.log('new project added', response.data)
+
+        } catch (error) {
+            setError(error.message)
+        }
     };
 
   return (
-   // create project page container
-   <div className='create-project-container'>
-   {/* top container */}
-   <div id='single-top-container'>
-       <span>&#2190</span>
-       <h1>Create New Project</h1>
-   </div>
+        // create project page container
+        <div className='create-project-container'>
+            {/* top container */}
+            <div id='single-top-container'>
+                <span>&#2190</span>
+                <h1>Create New Project</h1>
+            </div>
 
-   {/* create project form */}
-   <form className='project-form' onSubmit={handleSubmit}>
-       <label className='form-label'>Project Name</label>
-       <input type="text" />
+            {/* create project form */}
+            <form className='project-form' onSubmit={handleSubmit}>
+                <label className='form-label'>Project Name</label>
+                <input 
+                type="text" 
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                />
+                <label className='form-label'>Author</label>
+                <input 
+                type="text"
+                onChange={(e) => setAuthor(e.target.value)}
+                value={author} />
+                <label className='form-label'>Portfolio Link</label>
+                <input 
+                type="url"
+                onChange={(e) => setURL(e.target.value)}
+                value={url} />
+                <label className='form-label'>Upload Project Image</label>
+                <input 
+                type="file"
+                onChange={(e) => setImageURL(e.target.value)}
+                value={imageURL} accept="image/*"/>
+                <label className='form-label'>Description</label>
+                <input 
+                type="text"
+                onChange={(e) => setDescription(e.target.value)}
+                value={description} />
 
-       <label className='form-label'>Author</label>
-       <input type="text" />
-
-       <label className='form-label'>Portfolio Link</label>
-       <input type="url" />
-
-       <label className='form-label'>Upload Project Image</label>
-       <input type="file" accept="image/*"/>
-
-       <label className='form-label'>Description</label>
-       <input type="text" />
-
-       <button>Create Project</button>
-       <div className='error'>Error</div>
-   </form>
-</div>
-  )
+                <button>Create Project</button>
+                {error && <div className='error'>{error}</div>}
+            </form>
+        </div>
+    )
 }
 
 export default ProjectForm
