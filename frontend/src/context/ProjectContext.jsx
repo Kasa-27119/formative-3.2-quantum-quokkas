@@ -13,6 +13,19 @@ export const projectsReducer = (state, action) => {
             return {
                 projects: action.payload 
             }
+        case 'UPDATE_PROJECT':
+            const updatedProject = action.payload
+            const updatedProjects = state.projects.map(project => {
+                if (project._id === updatedProject._id) {
+                    return updatedProject
+                }
+
+                return project
+            })
+
+            return {
+                projects: updatedProjects
+            }
         default:
             return state
 
