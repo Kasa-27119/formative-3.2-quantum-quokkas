@@ -4,6 +4,9 @@
 * Home 26 - 51
 * About 30 - 51
 * Create/Post Project 56 - 89
+* Project Details 91 - 98
+* Login Page 103 - 119
+* Sign Up Page 125 - 147
 */
 
 /* Global Reset */
@@ -90,8 +93,56 @@
 
 /* Project details CSS Start */
 .project-details-container {
+        /* Layout */
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         padding: 25px 30px;
         gap: 3em;
 }
+/* Project details CSS End */
+
+/* Login Page CSS Start */
+.login {
+    /* Layout */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    /* Styling */
+    background-color: pink;
+    label {
+        /* Layout */
+        margin: 0 20px;
+    }
+    button{
+        /* Layout */
+        margin-left: 10px;
+    }
+}
+/* Login Page CSS End */
+
+/* Signup Page CSS Start */
+.sign-up-container {
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+    /* Styling */
+    background-color: pink;
+    .sign-up-form {
+        /* Layout */
+        display: flex;
+        label {
+            /* Layout */
+            margin: 0 20px;
+        }
+        button{
+            /* Layout */
+            margin-left: 10px;
+        }
+    }
+}
+/* Signup Page CSS End */
