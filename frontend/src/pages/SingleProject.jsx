@@ -1,39 +1,82 @@
 import React from 'react'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { ArrowLeftShort } from 'react-bootstrap-icons'
+import { formatDistanceToNow } from 'date-fns'
+
+const baseURL = import.meta.env.VITE_API_BASE_URL
 
 const SingleProject = () => {
-  return (
-    <>
-        {/* single page */}
-        <div id='single-project-container'>
+    const navigate = useNavigate();
 
-            {/* top container */}
-            <div id='single-top-container'>
-                <ArrowLeftShort className='back-arrow'/>
-                <h1>Project Name</h1>
-            </div>
+    // state for a single project
+    const [project, setProject] = useState(null);
 
-            {/* content container */}
-            <div className='single-content-container'>
-                {/* project image */}
-                <div className='img-container'></div>
+    // loading state
+    const [loading, setLoading] = useState(true);
 
-                {/* project text */}
-                <div className='single-text-container'>
-                    <h2>Project Author</h2>
-                    <h3>Created At:</h3>
+    // get id from url
+    const { id } = useParams();
 
-                    <div className='description-container'>
-                        <p className='body-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat turpis pulvinar tristique fermentum. Vestibulum vestibulum, nisl quis imperdiet interdum, augue purus tristique erat, eu tristique nunc risus sed dui. Maecenas sollicitudin efficitur lorem, eget pretium leo lobortis id. Pellentesque nulla nibh, aliquam vitae consectetur non, mattis et massa. Morbi vitae elit gravida, ultrices dolor et, rhoncus turpis.</p>
-                        <p className='body-text'>Quisque porta hendrerit massa, nec gravida mauris vulputate eget. Sed vel enim sit amet erat facilisis sagittis. Sed at aliquam quam. Etiam in sem a orci commodo dignissim. Nullam interdum, lacus eu pulvinar finibus, elit odio placerat eros, in facilisis mauris odio vel nunc. Nulla eget faucibus ex. Nunc feugiat sit amet libero quis mollis.</p>
+    // useEffect
+    useEffect(() => {
+        axios.get(`${baseURL}/api/projects/${id}`)
+            .then((res) => {
+                console.log(res.data);
+                setProject(res.data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log(error);
+                setLoading(false);
+            });
+    }, [id]);
+
+    // Return loading spinner or content
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    // Return content once project is loaded
+    if (!project) {
+        return <div>Project not found</div>;
+    }
+
+    return (
+        <>
+            {/* single page */}
+            <div id='single-project-container'>
+                {/* top container */}
+                <div id='single-top-container'>
+                    <ArrowLeftShort className='back-arrow' onClick={() => { navigate(-1) }} />
+                    <h1>{project.name}</h1>
+                </div>
+
+                {/* content container */}
+                <div className='single-content-container'>
+                    {/* project image */}
+                    <div className='img-container'>
+                        <img className='single-project-image' src={`${baseURL}/public/uploads/${project.image}`} alt={project.name} />
+                    </div>
+
+                    {/* project text */}
+                    <div className='single-text-container'>
+                        <h2>By {project.author}</h2>
+                        <a href={project.url} target='_blank'>{project.url}</a>
+                        <h3>Created At: {formatDistanceToNow(new Date(project.createdAt), { includeSeconds: true, addSuffix: true })}</h3>
+
+                        <div className='description-container'>
+                            <p className='body-text'>
+                                {project.description}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
+    );
+};
 
-        
-    </>
-  )
-}
+export default SingleProject;
 
-export default SingleProject
