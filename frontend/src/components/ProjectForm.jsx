@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios'
+import { useProjectsContext } from '../hooks/useProjectContext';
 
 const baseURL = import.meta.env.VITE_API_BASE_URL
 
 const ProjectForm = () => {
+    const {dispatch, projects} = useProjectsContext()
+
     // State to manage form input values
     const [name, setName] = useState('');
     const [author, setAuthor] = useState('');
