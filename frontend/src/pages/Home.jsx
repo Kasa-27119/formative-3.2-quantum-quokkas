@@ -69,12 +69,12 @@ const Home = () => {
                     const user_id = user.email
                     if (project.user_id === user_id) {
                         return (
-                            <ProjectDetails key={project._id} project={project}/>
+                            <ProjectDetails key={project._id} project={project} />
                         )
                     }
                 })) : (projects && projects.map((project) => {
                     return (
-                        <ProjectDetails key={project._id} project={project}/>
+                        <ProjectDetails key={project._id} project={project} />
                     )
                 }))}
             </div>

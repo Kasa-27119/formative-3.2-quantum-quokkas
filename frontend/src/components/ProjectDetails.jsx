@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { Trash } from 'react-bootstrap-icons'
+import { Pen } from 'react-bootstrap-icons'
+import {formatDistanceToNow} from 'date-fns'
 
 import { useProjectsContext } from '../hooks/useProjectContext'
 
@@ -92,6 +95,7 @@ const ProjectDetails = ({project}) => {
   }
 
   return (
+    
     <div className='project-details'>
       {/* conditional render - IS editing */}
       {/* edit project form */}
@@ -128,8 +132,15 @@ const ProjectDetails = ({project}) => {
             onChange={(e) => setEditDescription(e.target.value)}
             />
 
-            <button onClick={handleSubmitEdit}>Save Edit</button>
-            <button onClick={handleCancelEdit}>Cancel Edit</button>
+            <div className='button-edit-container'>
+
+              <button onClick={handleSubmitEdit} className='save-button'>Save Edit</button>
+              <button onClick={handleCancelEdit} className='cancel-button'>Cancel Edit</button>
+
+            </div>
+
+
+            
           </div>
       ) : (
         <>
@@ -147,21 +158,23 @@ const ProjectDetails = ({project}) => {
               </div>
               <div className='project-bottom-info-container'>
                 <div className='project-bottom-left-container'>
-                  <p>{project.createdAt}</p>
+                  <p>Created At: {formatDistanceToNow(new Date(project.createdAt), {includeSeconds: true}, {addSuffix: true})} ago</p>
                   <p><strong>Created by: </strong>{project.user_id}</p>
                 </div>
                 <div className='project-bottom-right-container'>
                   {project.user_id === user_id && (
                     <>
-                      <span className='edit' onClick={handleEdit}>Edit</span>
-                      <span className='delete' onClick={handleDelete}>Delete</span>
+                      <span className='edit-button' onClick={handleEdit}><Pen/></span>
+                      <span className='delete-button' onClick={handleDelete}><Trash/></span>
                     </>
                   )}
 
                 </div>
-                <button onClick={handleNavigate}>See more</button>
+                
                 
               </div>
+
+              <button onClick={handleNavigate}>See more</button>
               
             </div>
             

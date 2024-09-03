@@ -1,14 +1,15 @@
 /* APP.CSS CONTENTS Where things are roughly
-* Google Font Imports 11 - 17
+* Google Font Imports 14 - 20
+* Variables 23 - 47
 * Global reset 19 - 23
-* Variables 26 - 47
-* Nav 16 - 22
-* Home 26 - 51
-* About 30 - 51
-* Create/Post Project 56 - 89
-* Project Details 91 - 98
-* Login Page 103 - 119
-* Sign Up Page 125 - 147
+* global affected elements 58 - 64
+* Nav 66 - 78
+* Home 81 - 107
+* Create/Post Project 109 - 141
+* Project Details 144 - 206
+* Login Page 208 - 227
+* Sign Up Page 229 - 255
+* Single Project Page 259 - 306
 */
 
 /* Google Font Imports */
@@ -36,11 +37,14 @@
     /* SubHeader Variables */
     --subHeaderFontFamily: "Montserrat", sans-serif;
     --subHeaderFontWeight: 400;
+    --subHeaderFontSize: 2.5em;
     /* Body Text Variables */
     --bodyFontFamily: "Open Sans", sans-serif;
     --bodyFontWeight: 400;
+    --bodyFontSize: 1.5em;
     /* Icon Sizes */
-    --iconFontSize: 3.5em;
+    --mainIconFontSize: 3.5em;
+    --secondaryIconFontSize: 2em;
 }
 
 /* Global Reset */
@@ -49,12 +53,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* Global Reset ends */
 
+/* global affected elements Start */
 h1 {
     font-family: var(--headerFontFamily);
     font-weight: var(--headerFontWeight);
     font-size: var(--headerFontSize);
 }
+/* global affected elements End */
 
 /* Nav CSS Start */
 .container {
@@ -64,40 +71,41 @@ h1 {
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
-    h1 {
-        font-size: 2em;
-    }
+}
+/* ------- navbar portfolio top left link */
+.container h1 {
+    font-size: 2em;
 }
 /* Nav CSS End */
 
 /* Home CSS Start */
-.home {
-    /* About CSS Start */
-    .home-about {
-        /* Layout */
-        padding: 30px;
-        .home-about-img {
-            /* Layout */
-            width: 100%;
-            height: 400px;
-            margin: 20px 0;
-            /* Styling */
-            background-color: palegoldenrod;
-        }
-        .home-about-description {
-            /* Layout */
-            display: flex;
-            justify-content: space-between;
-            gap: 50px;
-            p {
-                /* Layout */
-                width: 50%;
-            }
-        }
-    }
-    /* About CSS End */
+/* ------ About section at the start of Home page */
+/* About CSS Start */
+.home-about {
+/* Layout */
+    padding: 30px;
 }
- /* Home CSS End */
+.home-about-img {
+    /* Layout */
+    width: 100%;
+    height: 400px;
+    margin: 20px 0;
+    /* Styling */
+    background-color: palegoldenrod;
+}
+.home-about-description {
+    /* Layout */
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.home-about-description p {
+    width: 50%;
+}
+/* About CSS End */
+
+/* Home CSS End */
 
 /* Project Form CSS Start */
 .create-project-container {
@@ -110,39 +118,93 @@ h1 {
     gap: 20px;
     /* Styling */
     background-color: pink;
+}
+.project-form {
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
-    .project-form {
-        /* Layout */
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+.project-form-container {
+    /* Layout */
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
 
-        .project-form-container {
-            /* Layout */
-            display: flex;
-            flex-direction: row;
-            gap: 50px;
-
-            .project-form-input-container {
-                /* Layout */
-                display: flex;
-                flex-direction: column;
-                gap: 5px;
-            }
-        }
-    }
+.project-form-input-container {
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 /* Project Form CSS End */
 
 /* Project details CSS Start */
-.project-details-container {
-        /* Layout */
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        padding: 25px 30px;
-        gap: 3em;
+/* ------- Grid parent */
+.projects {
+    /* Layout */
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
+    
+.project-card-container {
+    /* Layout */
+    padding: 10px;
+    /* Styling */
+    background-color: #5D5768;
+    
+}
+
+.project-card-container .project-image{
+    /* Layout */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    /* Styling */
+    background-color: #5D5768;
+}
+
+.project-info-container {
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.project-bottom-info-container {
+    /* Layout */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-button, 
+.delete-button {
+    /* Layout */
+    font-size: var(--secondaryIconFontSize);
+    padding: 5px;
+}
+
 /* Project details CSS End */
+
+/* Project Edit CSS Details Start */
+.edit-modal {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.edit-modal button {
+    margin: 15px 0px;
+}
+/* Project Edit CSS Details End */
 
 /* Login Page CSS Start */
 .login {
@@ -153,14 +215,15 @@ h1 {
     padding: 50px;
     /* Styling */
     background-color: pink;
-    label {
-        /* Layout */
-        margin: 0 20px;
-    }
-    button{
-        /* Layout */
-        margin-left: 10px;
-    }
+}
+
+.login label {
+    /* Layout */
+    margin: 0 20px;
+}
+.login button{
+    /* Layout */
+    margin-left: 10px;
 }
 /* Login Page CSS End */
 
@@ -175,18 +238,20 @@ h1 {
     gap: 20px;
     /* Styling */
     background-color: pink;
-    .sign-up-form {
-        /* Layout */
-        display: flex;
-        label {
-            /* Layout */
-            margin: 0 20px;
-        }
-        button{
-            /* Layout */
-            margin-left: 10px;
-        }
-    }
+}
+
+.sign-up-form {
+    /* Layout */
+    display: flex;
+}
+
+.sign-up-form label {
+    /* Layout */
+    margin: 0 20px;
+}
+.sign-up-form button{
+    /* Layout */
+    margin-left: 10px;
 }
 /* Signup Page CSS End */
 
@@ -197,44 +262,45 @@ h1 {
     flex-direction: column;
     width: 100%;
     padding: 30px;
-    #single-top-container {
-        /* Layout */
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-        .back-arrow {
-            /* Layout */
-            margin-right: 20px;
-            /* Styling */
-            font-size: var(--iconFontSize);
-        }
-    }
-    .single-content-container {
-        /* Layout */
-        display: flex;
-        flex-direction: column;
-        .img-container {
-            width: 100%;
-            height: 400px;
-            background-color: pink;
-            
-        }
-        .single-text-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
+}
 
-            .description-container {
-                display: flex;
-                width: 100%;
-                gap: 50px;
-                p {
-                    width: 50%;
-                }
-            }
-        }
-    }
+#single-top-container {
+    /* Layout */
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-arrow {
+    /* Layout */
+    margin-right: 20px;
+    /* Styling */
+    font-size: var(--mainIconFontSize);
+}
+
+.single-content-container {
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+}
+
+.img-container {
+    width: 100%;
+    height: 400px;
+    background-color: pink;
+    
+}
+.single-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.description-container {
+    display: flex;
+    width: 100%;
+    gap: 50px;
 }
 
 /* Single Project Page CSS End */
