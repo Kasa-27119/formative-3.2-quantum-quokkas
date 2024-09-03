@@ -11,7 +11,7 @@ export const projectsReducer = (state, action) => {
             }
         case 'CREATE_PROJECTS':
             return {
-                projects: action.payload 
+                projects: [action.payload, ...state.projects ]
             }
         case 'UPDATE_PROJECT':
             const updatedProject = action.payload
