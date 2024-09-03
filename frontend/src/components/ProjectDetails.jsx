@@ -103,6 +103,12 @@ const ProjectDetails = ({project}) => {
             onChange={(e) => setEditName(e.target.value)}
             />
 
+            <label className='form-label'>Edit Project Author</label>
+            <input type="text" 
+            value={editAuthor}
+            onChange={(e) => setEditAuthor(e.target.value)}
+            />
+
             <label className='form-label'>Edit Project Image</label>
             <input type="file" 
             accept="image/*"
