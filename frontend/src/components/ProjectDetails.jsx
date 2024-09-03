@@ -30,22 +30,30 @@ const ProjectDetails = ({project}) => {
 
   // submit edit
   const handleSubmitEdit = async () => {
-    const formData = new FormData();
-    formData.append('name', editName);
-    formData.append('author', editAuthor);
-    formData.append('url', editURL);
-    formData.append('imageURL', editImageURL); // Ensure backend can handle this
-    formData.append('description', editDescription);
+    // const formData = new FormData();
+    // formData.append('name', editName);
+    // formData.append('author', editAuthor);
+    // formData.append('url', editURL);
+    // formData.append('imageURL', editImageURL); // Ensure backend can handle this
+    // formData.append('description', editDescription);
+
+    const updatedProject = {
+      name: editName,
+      image: editImageURL,
+      author: editAuthor,
+      url: editURL,
+      description: editDescription
+    }
     
     try {
       const response = await axios.patch(
         `${baseURL}/api/projects/${project._id}`,
-        formData, // Pass the FormData object
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        }
+        updatedProject, // Pass the FormData object
+        // {
+        //   headers: {
+        //     'Content-Type': 'multipart/form-data',
+        //   },
+        // }
       );
       const updatedData = response.data;
       if (response.status === 200) {
@@ -93,6 +101,12 @@ const ProjectDetails = ({project}) => {
             <input type="text" 
             value={editName}
             onChange={(e) => setEditName(e.target.value)}
+            />
+
+            <label className='form-label'>Edit Project Author</label>
+            <input type="text" 
+            value={editAuthor}
+            onChange={(e) => setEditAuthor(e.target.value)}
             />
 
             <label className='form-label'>Edit Project Image</label>
