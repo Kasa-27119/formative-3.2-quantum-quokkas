@@ -120,24 +120,42 @@ const ProjectDetails = ({project}) => {
       ) : (
         <>
           {/* original render */}
-          <div>
+          <div className='project-card-container'>
             {/* project image */}
             {project.image && (
               <img className='project-image' src={`${baseURL}/public/uploads/${project.image}`} alt={project.title} />
             )}
             {/* project details */}
-            <h4>{project.name}</h4>
-            <h6>{project.author}</h6>
-            <p>{project.createdAt}</p>
-            <p><strong>Created by: </strong>{project.user_id}</p>
-            <button onClick={handleNavigate}>See more</button>
+            <div className='project-info-container'>
+              <div className='project-names-container'>
+                <h4>{project.name}</h4>
+                <h6>{project.author}</h6>
+              </div>
+              <div className='project-bottom-info-container'>
+                <div className='project-bottom-left-container'>
+                  <p>{project.createdAt}</p>
+                  <p><strong>Created by: </strong>{project.user_id}</p>
+                </div>
+                <div className='project-bottom-right-container'>
+                  {project.user_id === user_id && (
+                    <>
+                      <span className='edit' onClick={handleEdit}>Edit</span>
+                      <span className='delete' onClick={handleDelete}>Delete</span>
+                    </>
+                  )}
+
+                </div>
+                <button onClick={handleNavigate}>See more</button>
+                
+              </div>
+              
+            </div>
+            
+            
+            
+            
           </div>
-            {project.user_id === user_id && (
-              <>
-              <span className='edit' onClick={handleEdit}>Edit</span>
-              <span className='delete' onClick={handleDelete}>Delete</span>
-              </>
-            )}
+            
         </>
       )}
     </div>
