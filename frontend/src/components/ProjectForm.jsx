@@ -33,13 +33,13 @@ const ProjectForm = () => {
         formData.append('name', name)
         formData.append('author', author)
         formData.append('url', url)
-        formData.append('imageURL', imageURL)
+        formData.append('image', imageURL)
         formData.append('description', description)
 
         // try/catch to send project json data to server
         try {
 
-            const response = await axios.post(`${baseURL}/api/projects/`, project, {
+            const response = await axios.post(`${baseURL}/api/projects/`, formData, {
                 headers: {
                     // 'Content-Type': 'application/json'
                     'Content-Type': 'multipart/form-data'
