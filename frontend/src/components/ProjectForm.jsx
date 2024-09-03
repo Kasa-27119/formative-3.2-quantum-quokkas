@@ -71,7 +71,6 @@ const ProjectForm = () => {
         <div className='create-project-container'>
             {/* top container */}
             <div id='single-top-container'>
-                <span>&#2190</span>
                 <h1>Create New Project</h1>
             </div>
 
