@@ -39,7 +39,7 @@ const Navbar = () => {
                 <nav>
                     {user &&
 
-                        <div>
+                        <div className='logged-in-container'>
                             <span className='userEmail'>
                                 {getEmailCharactersBeforeAtSymbol
                                 (user.email)}</span>
