@@ -75,6 +75,7 @@ h1 {
     /* Layout */
     display: flex;
     position: fixed;
+    top: 0;
     width: 100%;
     justify-content: space-between;
     align-items: center;
@@ -194,7 +195,7 @@ h1 {
 /* About CSS Start */
 .home-about {
     /* Layout */
-    padding: 30px;
+    padding: 80px 30px 30px 30px;
 /* Layout */
 }
 
@@ -467,8 +468,8 @@ h1 {
     justify-content: center;
     align-items: center;
     padding: 30px;
-    height: 65vh;
-    margin: 5rem 0;
+    height: 64vh;
+    margin: 10rem 0 5rem 0;
     gap: 20px;
     /* Styling */
     background: rgb(153, 225, 217);
