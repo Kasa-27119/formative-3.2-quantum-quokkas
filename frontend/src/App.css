@@ -56,6 +56,10 @@
 }
 /* Global Reset ends */
 
+body {
+    background-color: var(--primaryColor);
+}
+
 /* global affected elements Start */
 h1 {
     font-family: var(--headerFontFamily);
@@ -68,15 +72,118 @@ h1 {
 .container {
     /* Layout */
     display: flex;
+    position: fixed;
     width: 100%;
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
+    /* Styling */
+    background: rgba( 247, 86, 124, 0.7 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.20 );
+    backdrop-filter: blur( 6.5px );
+    -webkit-backdrop-filter: blur( 6.5px );
 }
 /* ------- navbar portfolio top left link */
 .container h1 {
-    font-size: 2em;
+    /* Styling */
+    font-size: 2.2em;
+    color: var(--primaryColor);
+    transition: color 0.5s ease;
 }
+
+.container h1:hover {
+    /* Styling */
+    color: var(--primaryButtonColor);
+    text-shadow: 1px 1px 10px rgba(255,250,227,1);
+    opacity: 0.8;
+    transition: color 0.5s ease;
+}
+
+.container .portfolio-home-link {
+    /* Styling */
+    text-decoration: none;
+}
+
+/* ------- buttons nav top right links*/
+.logged-in-container {
+    /* Layout */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* Styling */
+    font-size: 1.3em;
+}
+
+.nav-user-email {
+    /* Styling */
+    color: var(--primaryColor);
+    letter-spacing: 1px;
+}
+
+.signup-login-container {
+    display: flex;
+    gap: 20px;
+}
+
+/* LOGIN/LOGOUT PRIMARY BUTTON */
+.logout-button, .login-button, .signup-button {
+    /* Styling */
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    opacity: 0.8;
+    font-size: 0.8em;
+    padding: 10px 20px;
+    font-family: var(--subHeaderFontFamily);
+    transition: color 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+.logout-button, .login-button {
+    /* Styling */
+    background: #F7567C;
+    box-shadow:  5px 5px 10px #c64563,
+                 -5px -5px 10px #ff6795;
+    color: var(--primaryColor);
+}
+
+.logout-button {
+    font-size: 0.8em;
+}
+
+.logout-button:hover, .login-button:hover {
+    /* Styling */
+    opacity: 1;
+    background: #F7567C;
+    box-shadow: inset 5px 5px 10px #c64563,
+                inset -5px -5px 10px #ff6795;
+    transition: color 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+    cursor: pointer;
+
+}
+
+/* SIGNUP SECONDARY BUTTON */
+.signup-button {
+    /* Styling */
+    background: #99E1D9;
+    box-shadow:  5px 5px 10px #7ab4ae,
+             -5px -5px 10px #b8ffff;
+    color: var(--primaryButtonColor);
+    font-family: var(--subHeaderFontFamily);
+    transition: color 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+}
+
+.signup-button:hover {
+    /* Styling */
+    opacity: 0.9;
+    background: #99E1D9;
+    box-shadow: inset 5px 5px 10px #7ab4ae,
+            inset -5px -5px 10px #b8ffff;
+    transition: color 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+    cursor: pointer;
+}
+
 /* Nav CSS End */
 
 /* Home CSS Start */
@@ -84,7 +191,7 @@ h1 {
 /* About CSS Start */
 .home-about {
 /* Layout */
-    padding: 30px;
+    padding: 100px 30px 30px 30px;
 }
 .home-about-img {
     /* Layout */
@@ -305,3 +412,56 @@ h1 {
 }
 
 /* Single Project Page CSS End */
+
+/* Footer CSS Start */
+footer {
+    /* Layout */
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px 30px;
+    font-size: 1.2em;
+    /* Styling */
+    background: rgba( 247, 86, 124, 0.7 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 6.5px );
+    -webkit-backdrop-filter: blur( 6.5px );
+}
+
+.left-footer-container {
+    /* Layout */
+    display: flex;
+    gap: 20px;
+}
+
+.left-footer-container p{
+    /* Layout */
+    display: flex;
+    gap: 20px;
+    /* Styling */
+    color: var(--primaryColor);
+} 
+
+.right-footer-container {
+    /* Layout */
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.right-footer-container p {
+    /* Styling */
+    color: var(--primaryColor);
+    font-size: 0.8em;
+}
+
+.copyright-icon {
+    /* Styling */
+    font-size: 1.3em;
+    color: var(--primaryColor);
+}
+
+/* Footer CSS End */
