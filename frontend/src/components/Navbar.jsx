@@ -32,7 +32,7 @@ const Navbar = () => {
 
             <div className='container'>
 
-                <Link to='/'>
+                <Link to='/' className='portfolio-home-link'>
                     <h1>Portfolio App</h1>
                 </Link>
 
@@ -40,17 +40,18 @@ const Navbar = () => {
                     {user &&
 
                         <div className='logged-in-container'>
-                            <span className='userEmail'>
+                            <span className='nav-user-email'>
                                 {getEmailCharactersBeforeAtSymbol
                                 (user.email)}</span>
-                                <button onClick={handleClick} className='logoutButton'>Logout</button>
+                                <button onClick={handleClick} className='logout-button'>Logout</button>
                         </div>
                         }
 
                         {!user && 
-                            <div>
-                                <Link to='/login'>Login</Link>
-                                <Link to='/signup'>Sign Up</Link>
+                            <div className='signup-login-container'>
+                                <Link to='/signup' className='signup-button'>Sign Up</Link>
+                                <Link to='/login' className='login-button'>Login</Link>
+                                
                             </div>
                         }
 
