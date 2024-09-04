@@ -22,26 +22,44 @@ const Login = () => {
 
     // Log in form with email and password input
     return (
-        <form className='login' onSubmit={handleSubmit}>
-            <h3>Login</h3>
-            <label>Email</label>
-            <input 
-                type='email'
-                onChange={(e) => setEmail(e.target.value)} 
-                valuse={password}
-            />
+        // sign up page container
+        <div className='log-on-container'>
+            <div className='log-on-form--container'>
 
-            <label>Password</label>
-            <input 
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-                valuse={password}
-            />
+                {/* top container */}
+                <div id='single-top-container'>
+                    {/* <span>&#2190</span> */}
+                    <h1>Login</h1>
+                </div>
 
-            <button disabled={isLoading}>Log In</button>
-            {error && <div className='error'>{error}</div>}
-        
-        </form>
+                {/* login form */}
+                <form className='log-on-form' onSubmit={handleSubmit}>
+                    <div className='log-on-field'>
+                        <label className='form-label'>Email</label>
+                        <input 
+                            type='email'
+                            onChange={(e) => setEmail(e.target.value)} 
+                            valuse={email}
+                        />
+                    </div>
+
+                    <div className='log-on-field'>
+                        <label className='form-label'>Password</label>
+                        <input 
+                            type="password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            valuse={password}
+                        />
+                    </div>
+
+                    {error && <div className='error'>{error}</div>}
+                </form>
+
+                <div className='form-submit--button'>
+                    <button disabled={isLoading} onClick={handleSubmit}>Login</button>
+                </div>
+            </div>
+        </div>
     )
 }
 

@@ -54,6 +54,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 /* Global Reset ends */
 
 body {
@@ -66,6 +67,7 @@ h1 {
     font-weight: var(--headerFontWeight);
     font-size: var(--headerFontSize);
 }
+
 /* global affected elements End */
 
 /* Nav CSS Start */
@@ -83,6 +85,7 @@ h1 {
     backdrop-filter: blur( 6.5px );
     -webkit-backdrop-filter: blur( 6.5px );
 }
+
 /* ------- navbar portfolio top left link */
 .container h1 {
     /* Styling */
@@ -190,8 +193,9 @@ h1 {
 /* ------ About section at the start of Home page */
 /* About CSS Start */
 .home-about {
+    /* Layout */
+    padding: 30px;
 /* Layout */
-    padding: 100px 30px 30px 30px;
 }
 
 .home-about h1 {
@@ -214,6 +218,7 @@ h1 {
     box-shadow:  5px 5px 10px #82bfb8,
              -5px -5px 10px #b0fffa;
 }
+
 .home-about-img {
     /* Layout */
     width: 100%;
@@ -227,6 +232,7 @@ h1 {
     background-size: cover;
 
 }
+
 .home-about-description {
     /* Layout */
     display: flex;
@@ -243,6 +249,7 @@ h1 {
 .home-about-description p {
     width: 50%;
 }
+
 /* About CSS End */
 
 /* Home CSS End */
@@ -256,14 +263,57 @@ h1 {
     align-items: center;
     padding: 30px 20px;
     gap: 20px;
+    height: 70vh;
     /* Styling */
     background-color: pink;
 }
+
 .project-form {
     /* Layout */
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    gap: 2rem;
+}
+
+.project-form-field-group{
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-form-field-single{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.project-form .second-form-row{
+    margin-left: 8rem;
+}
+
+.project-form-field-desc{
+    display: flex;
+    flex-direction: column;
+    margin: 0 5rem;
+    width: 70%;
+}
+
+.project-form-field-single label, .project-form-field-desc label {
+    /* Layout */
+    font-size: 25px;
+}
+
+.project-form-field-single input, .project-form-field-desc input {
+    /* Layout */
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    height: 5vh;
 }
 
 .project-form-container {
@@ -279,6 +329,7 @@ h1 {
     flex-direction: column;
     gap: 5px;
 }
+
 /* Project Form CSS End */
 
 /* Project details CSS Start */
@@ -291,11 +342,8 @@ h1 {
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 35px 35px;
 }
-    
+
 .project-card-container {
-    /* Layout */
-    /* padding: 10px; */
-    /* Styling */
     border: 5px;
     background-color: #e9fffc;
     box-shadow: 5px 5px 10px #66a7a0,
@@ -303,7 +351,7 @@ h1 {
     
 }
 
-.project-card-container .project-image{
+.project-card-container .project-image {
     /* Layout */
     width: 100%;
     height: 400px;
@@ -377,7 +425,7 @@ h1 {
     color: var(--primaryButtonColor);
 }
 
-.edit-button, 
+.edit-button,
 .delete-button {
     /* Layout */
     font-size: var(--secondaryIconFontSize);
@@ -404,59 +452,101 @@ h1 {
     margin-top: 10px;
     margin-bottom: 5px;
 }
+
 .edit-modal button {
     margin: 15px 0px;
 }
+
 /* Project Edit CSS Details End */
 
-/* Login Page CSS Start */
-.login {
-    /* Layout */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px;
-    /* Styling */
-    background-color: pink;
-}
-
-.login label {
-    /* Layout */
-    margin: 0 20px;
-}
-.login button{
-    /* Layout */
-    margin-left: 10px;
-}
-/* Login Page CSS End */
-
-/* Signup Page CSS Start */
-.sign-up-container {
+/* login/signup Page CSS Start */
+.log-on-container {
     /* Layout */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 30px;
+    height: 65vh;
+    margin: 5rem 0;
     gap: 20px;
     /* Styling */
-    background-color: pink;
+    background: rgb(153, 225, 217);
+    background: linear-gradient(321deg, rgba(153, 225, 217, 1) 0%, rgba(247, 86, 124, 1) 100%);
 }
 
-.sign-up-form {
+.log-on-container .log-on-form--container {
+    /* layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 10rem;
+        border-radius: 30px;
+    gap: 4rem;
+    /* stying */
+    background: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid white;
+}
+
+.log-on-container .log-on-form--container #single-top-container{
+    margin: 0;
+}
+
+.log-on-form {
     /* Layout */
     display: flex;
+    gap: 8rem;
 }
 
-.sign-up-form label {
-    /* Layout */
-    margin: 0 20px;
+.log-on-form .log-on-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
 }
-.sign-up-form button{
+
+.log-on-form label {
     /* Layout */
-    margin-left: 10px;
+    font-size: 25px;
 }
-/* Signup Page CSS End */
+
+.log-on-form input {
+    /* Layout */
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    height: 5vh;
+}
+
+.form-submit--button button {
+    /* Layout */
+    font-size: var(--bodyFontSize);
+    padding: 15px 25px;
+    border-radius: 5px;
+    border: none;
+    /* styling */
+    background-color: var(--secondaryColor);
+    -webkit-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.40);
+    -moz-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.40);
+    box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.40);
+    color: white;
+    transition: all .5s ease;
+    cursor: pointer;
+}
+
+.form-submit--button button:hover {
+    /* styling */
+    background: #e0e0e0;
+    box-shadow: inset 20px 20px 60px #9c9c9c,
+        inset -20px -20px 60px #ffffff;
+    color: var(--primaryButtonColor);
+}
+/* login/signup Page CSS End */
 
 /* Single Project Page CSS Start */
 #single-project-container {
