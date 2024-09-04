@@ -335,6 +335,53 @@ h1 {
 
 /* Project details CSS Start */
 /* ------- Grid parent */
+
+/* filter buttons container css start */
+.filter-container {
+    /* layout */
+    margin-bottom: 40px;
+    padding: 30px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* styling */
+    background-color: var(--secondaryButtonColor);
+}
+
+.filter-header {
+    font-size: var(--subHeaderFontSize);
+    font-family: var(--headerFontFamily);
+    font-weight: var(--headerFontWeight);
+    color: white;
+}
+
+.filter-buttons-container {
+    /* layout */
+    width: 30%;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filter-button {
+    /* styling */
+    padding: 12px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--secondaryColor);
+    color: var(--primaryColor);
+    font-size: 1.2em;
+    font-family: var(--subHeaderFontFamily);
+    font-weight: var(--subHeaderFontWeight);
+    box-shadow: 5px 5px 10px #de4d70, -5px -5px 10px #ff5f88;
+}
+
+
+/* filter buttons container css end */
+
 .projects {
     /* Layout */
     max-width: 100%;
@@ -345,58 +392,66 @@ h1 {
 }
 
 .project-card-container {
-    border: 5px;
+    height: 100%;
+    border-radius: 5px;
     background-color: #e9fffc;
     box-shadow: 5px 5px 10px #66a7a0,
                 -5px -5px 10px var(--secondaryButtonColor);
-    
 }
 
-.project-card-container .project-image {
+.project-image {
     /* Layout */
     width: 100%;
-    height: 400px;
+    height: 350px;
     object-fit: cover;
     object-position: center;
     display: block;
     /* Styling */
     background-color: #5D5768;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .project-info-container {
     /* Layout */
+    width: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 10px;
-    padding: 10px;
+    padding: 15px;
 }
 
 .project-names-container h4 {
-    font-size: var(--subHeaderFontSize);
+    font-size: 2em;
     font-family: var(--headerFontFamily);
-    font-weight: var(--headerFontWeight);
     color: var(--secondaryColor);
 }
 
 .project-names-container h6 {
-    font-size: 2em;
+    font-size: 1.7em;
     font-family: var(--headerFontFamily);
     font-weight: var(--subHeaderFontWeight);
-    color: #F7567C;
+    color: var(--primaryButtonColor)
 }
 
 .project-bottom-info-container {
     /* Layout */
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     margin-top: 15px;
+}
+
+.project-bottom-right-container {
+    width: 30%;
 }
 
 .project-info-container button {
     /* Layout */
     width: 40%;
-    margin: 30px 30% 10px 30%;
+    margin-top: 20px;
     padding: 12px 16px;
     /* Styling */
     border: none;
@@ -420,7 +475,7 @@ h1 {
 }
 
 .project-bottom-left-container p {
-    font-size: 1.6em;
+    font-size: 1.1em;
     font-family: var(--subHeaderFontFamily);
     font-weight: var(--subHeaderFontWeight);
     color: var(--primaryButtonColor);
@@ -439,6 +494,13 @@ h1 {
 .delete-button:hover {
     /* Styling */
     color: var(--secondaryColor);
+}
+
+.see-more-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Project details CSS End */
