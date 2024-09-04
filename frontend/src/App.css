@@ -379,6 +379,15 @@ h1 {
     box-shadow: 5px 5px 10px #de4d70, -5px -5px 10px #ff5f88;
 }
 
+.filter-button:hover {
+    opacity: 1;
+    background: var(--secondaryColor);
+    box-shadow: inset 5px 5px 10px #c64563,
+                inset -5px -5px 10px var(--secondaryColor);
+    transition: color 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+    cursor: pointer;
+}
+
 
 /* filter buttons container css end */
 
