@@ -57,6 +57,10 @@
 
 /* Global Reset ends */
 
+body {
+    background-color: var(--primaryColor);
+}
+
 /* global affected elements Start */
 h1 {
     font-family: var(--headerFontFamily);
@@ -70,15 +74,117 @@ h1 {
 .container {
     /* Layout */
     display: flex;
+    position: fixed;
     width: 100%;
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
+    /* Styling */
+    background: rgba( 247, 86, 124, 0.7 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.20 );
+    backdrop-filter: blur( 6.5px );
+    -webkit-backdrop-filter: blur( 6.5px );
 }
 
 /* ------- navbar portfolio top left link */
 .container h1 {
-    font-size: 2em;
+    /* Styling */
+    font-size: 2.2em;
+    color: var(--primaryColor);
+    transition: color 0.5s ease;
+}
+
+.container h1:hover {
+    /* Styling */
+    color: var(--primaryButtonColor);
+    text-shadow: 1px 1px 10px rgba(255,250,227,1);
+    opacity: 0.8;
+    transition: color 0.5s ease;
+}
+
+.container .portfolio-home-link {
+    /* Styling */
+    text-decoration: none;
+}
+
+/* ------- buttons nav top right links*/
+.logged-in-container {
+    /* Layout */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* Styling */
+    font-size: 1.3em;
+}
+
+.nav-user-email {
+    /* Styling */
+    color: var(--primaryColor);
+    letter-spacing: 1px;
+}
+
+.signup-login-container {
+    display: flex;
+    gap: 20px;
+}
+
+/* LOGIN/LOGOUT PRIMARY BUTTON */
+.logout-button, .login-button, .signup-button {
+    /* Styling */
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    opacity: 0.8;
+    font-size: 0.8em;
+    padding: 10px 20px;
+    font-family: var(--subHeaderFontFamily);
+    transition: color 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+.logout-button, .login-button {
+    /* Styling */
+    background: #F7567C;
+    box-shadow:  5px 5px 10px #c64563,
+                 -5px -5px 10px #ff6795;
+    color: var(--primaryColor);
+}
+
+.logout-button {
+    font-size: 0.8em;
+}
+
+.logout-button:hover, .login-button:hover {
+    /* Styling */
+    opacity: 1;
+    background: #F7567C;
+    box-shadow: inset 5px 5px 10px #c64563,
+                inset -5px -5px 10px #ff6795;
+    transition: color 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+    cursor: pointer;
+
+}
+
+/* SIGNUP SECONDARY BUTTON */
+.signup-button {
+    /* Styling */
+    background: #99E1D9;
+    box-shadow:  5px 5px 10px #7ab4ae,
+             -5px -5px 10px #b8ffff;
+    color: var(--primaryButtonColor);
+    font-family: var(--subHeaderFontFamily);
+    transition: color 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+}
+
+.signup-button:hover {
+    /* Styling */
+    opacity: 0.9;
+    background: #99E1D9;
+    box-shadow: inset 5px 5px 10px #7ab4ae,
+            inset -5px -5px 10px #b8ffff;
+    transition: color 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+    cursor: pointer;
 }
 
 /* Nav CSS End */
@@ -89,15 +195,42 @@ h1 {
 .home-about {
     /* Layout */
     padding: 30px;
+/* Layout */
+}
+
+.home-about h1 {
+    color: var(--primaryButtonColor);
+}
+
+.h1-2402 {
+    font-size: 2em;
+    color: var(--secondaryButtonColor);
+    text-shadow: 0px 0px 3px rgba(247,86,124,1);
+    margin-right: 20px;
+
+}
+.home-about-img-container {
+    margin: 20px 0;
+    height: 500px;
+    padding: 2px;
+    border-radius: 5px;
+    background: #99E1D9;
+    box-shadow:  5px 5px 10px #82bfb8,
+             -5px -5px 10px #b0fffa;
 }
 
 .home-about-img {
     /* Layout */
     width: 100%;
-    height: 400px;
-    margin: 20px 0;
+    height: 100%;
+
+    border-radius: 5px;
+    padding: 5px;
     /* Styling */
-    background-color: palegoldenrod;
+    background-image: url('./img/aboutImg.webp');
+    background-position: center;
+    background-size: cover;
+
 }
 
 .home-about-description {
@@ -105,7 +238,13 @@ h1 {
     display: flex;
     justify-content: space-between;
     gap: 50px;
+    font-family: var(--bodyFontFamily);
 }
+
+.home-about-description-highlight, .about-icons {
+    color: var(--secondaryColor);
+}
+
 
 .home-about-description p {
     width: 50%;
@@ -198,22 +337,26 @@ h1 {
 .projects {
     /* Layout */
     max-width: 100%;
+    padding: 30px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 35px 35px;
 }
 
 .project-card-container {
-    /* Layout */
-    padding: 10px;
-    /* Styling */
-    background-color: #5D5768;
-
+    border: 5px;
+    background-color: #e9fffc;
+    box-shadow: 5px 5px 10px #66a7a0,
+                -5px -5px 10px var(--secondaryButtonColor);
+    
 }
 
 .project-card-container .project-image {
     /* Layout */
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
     display: block;
     /* Styling */
     background-color: #5D5768;
@@ -224,7 +367,21 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 10px;
+    padding: 10px;
+}
+
+.project-names-container h4 {
+    font-size: var(--subHeaderFontSize);
+    font-family: var(--headerFontFamily);
+    font-weight: var(--headerFontWeight);
+    color: var(--secondaryColor);
+}
+
+.project-names-container h6 {
+    font-size: 2em;
+    font-family: var(--headerFontFamily);
+    font-weight: var(--subHeaderFontWeight);
+    color: #F7567C;
 }
 
 .project-bottom-info-container {
@@ -232,6 +389,40 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 15px;
+}
+
+.project-info-container button {
+    /* Layout */
+    width: 40%;
+    margin: 30px 30% 10px 30%;
+    padding: 12px 16px;
+    /* Styling */
+    border: none;
+    border-radius: 5px;
+    background-color: var(--secondaryColor);
+    color: var(--primaryColor);
+    font-size: 1.2em;
+    font-family: var(--subHeaderFontFamily);
+    font-weight: var(--subHeaderFontWeight);
+    box-shadow: 5px 5px 10px #de4d70,
+                -5px -5px 10px #ff5f88;
+}
+
+.project-info-container button:hover {
+    opacity: 1;
+    background: var(--secondaryColor);
+    box-shadow: inset 5px 5px 10px #c64563,
+                inset -5px -5px 10px var(--secondaryColor);
+    transition: color 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+    cursor: pointer;
+}
+
+.project-bottom-left-container p {
+    font-size: 1.6em;
+    font-family: var(--subHeaderFontFamily);
+    font-weight: var(--subHeaderFontWeight);
+    color: var(--primaryButtonColor);
 }
 
 .edit-button,
@@ -239,6 +430,14 @@ h1 {
     /* Layout */
     font-size: var(--secondaryIconFontSize);
     padding: 5px;
+    /* Styling */
+    color: var(--primaryButtonColor);
+}
+
+.edit-button:hover, 
+.delete-button:hover {
+    /* Styling */
+    color: var(--secondaryColor);
 }
 
 /* Project details CSS End */
@@ -356,6 +555,8 @@ h1 {
     flex-direction: column;
     width: 100%;
     padding: 30px;
+    /* styling */
+    border-radius: 5px;
 }
 
 #single-top-container {
@@ -365,11 +566,34 @@ h1 {
     margin-bottom: 20px;
 }
 
+#single-top-container h1 {
+    font-family: var(--headerFontFamily);
+    font-size: var(--headerFontSize);
+    font-weight: var(--headerFontWeight);
+    color: var(--secondaryColor);
+}
+
 .back-arrow {
     /* Layout */
     margin-right: 20px;
+    padding: 10px;
+    border-radius: 5px;
     /* Styling */
     font-size: var(--mainIconFontSize);
+    background-color: var(--secondaryColor);
+    color: var(--primaryColor);
+    box-shadow: 5px 5px 10px #de4d70,
+                -5px -5px 10px #ff5f88;
+}
+
+/* back arrow hover */
+.back-arrow:hover {
+    opacity: 1;
+    background: var(--secondaryColor);
+    box-shadow: inset 5px 5px 10px #c64563,
+                inset -5px -5px 10px var(--secondaryColor);
+    transition: color 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+    cursor: pointer;
 }
 
 .single-content-container {
@@ -380,9 +604,18 @@ h1 {
 
 .img-container {
     width: 100%;
-    height: 400px;
-    background-color: pink;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+}
 
+.single-project-image {
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--secondaryButtonColor);
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #66a7a0,
+                -5px -5px 10px var(--secondaryButtonColor);
 }
 
 .single-text-container {
@@ -392,10 +625,101 @@ h1 {
     margin-top: 20px;
 }
 
+/* project details text */
+.single-text-container h2 {
+    font-family: var(--subHeaderFontFamily);
+    font-size: var(--subHeaderFontSize);
+    font-weight: var(--subHeaderFontWeight);
+    color: var(--primaryButtonColor);
+}
+
+.single-content-container a {
+    font-family: var(--subHeaderFontFamily);
+    font-weight: var(--subHeaderFontWeight);
+    font-size: 1.3em;
+    color: var(--primaryButtonColor);
+}
+
+.single-content-container a:hover {
+    color: var(--secondaryColor);
+    transition: color 0.5s ease;
+}
+
+.single-content-container h3 {
+    font-family: var(--subHeaderFontFamily);
+    font-weight: var(--subHeaderFontWeight);
+    font-size: 1.6em;
+    color: var(--primaryButtonColor);
+}
+/* project details text ends */
+
 .description-container {
     display: flex;
     width: 100%;
     gap: 50px;
 }
 
+
+.description-container p {
+    font-family: var(--bodyFontFamily);
+    font-weight: var(--bodyFontWeight);
+    font-size: var(--bodyFontSize);
+    color: var(--primaryButtonColor);
+}
+
 /* Single Project Page CSS End */
+
+/* Single Project Page CSS End */
+
+/* Footer CSS Start */
+footer {
+    /* Layout */
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px 30px;
+    font-size: 1.2em;
+    /* Styling */
+    background: rgba( 247, 86, 124, 0.7 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 6.5px );
+    -webkit-backdrop-filter: blur( 6.5px );
+}
+
+.left-footer-container {
+    /* Layout */
+    display: flex;
+    gap: 20px;
+}
+
+.left-footer-container p{
+    /* Layout */
+    display: flex;
+    gap: 20px;
+    /* Styling */
+    color: var(--primaryColor);
+} 
+
+.right-footer-container {
+    /* Layout */
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.right-footer-container p {
+    /* Styling */
+    color: var(--primaryColor);
+    font-size: 0.8em;
+}
+
+.copyright-icon {
+    /* Styling */
+    font-size: 1.3em;
+    color: var(--primaryColor);
+}
+
+/* Footer CSS End */
