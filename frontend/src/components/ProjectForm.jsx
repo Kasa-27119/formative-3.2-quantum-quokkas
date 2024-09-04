@@ -76,34 +76,56 @@ const ProjectForm = () => {
 
             {/* create project form */}
             <form className='project-form' onSubmit={handleSubmit}>
-                <label className='form-label'>Project Name</label>
-                <input 
-                type="text" 
-                onChange={(e) => setName(e.target.value)}
-                value={name}
-                />
-                <label className='form-label'>Author</label>
-                <input 
-                type="text"
-                onChange={(e) => setAuthor(e.target.value)}
-                value={author} />
-                <label className='form-label'>Portfolio Link</label>
-                <input 
-                type="url"
-                onChange={(e) => setURL(e.target.value)}
-                value={url} />
-                <label className='form-label'>Upload Project Image</label>
-                <input 
-                type="file"
-                onChange={(e) => setImageURL(e.target.files[0])}
-                accept="image/*"/>
-                <label className='form-label'>Description</label>
-                <input 
-                type="text"
-                onChange={(e) => setDescription(e.target.value)}
-                value={description} />
+                <div className='project-form-field-group'>
+                    {/* name */}
+                    <div className='project-form-field-single'>
+                        <label className='form-label'>Project Name</label>
+                        <input 
+                        type="text" 
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}
+                        />
+                    </div>
+                    {/* author */}
+                    <div className='project-form-field-single'>
+                        <label className='form-label'>Author</label>
+                        <input 
+                        type="text"
+                        onChange={(e) => setAuthor(e.target.value)}
+                        value={author} />
+                    </div>
+                </div>
 
-                <button>Create Project</button>
+                <div className='project-form-field-group second-form-row'>
+                    <div className='project-form-field-single'>
+                        <label className='form-label'>Portfolio Link</label>
+                        <input 
+                        type="url"
+                        onChange={(e) => setURL(e.target.value)}
+                        value={url} />
+                    </div>
+                    <div className='project-form-field-single'>
+                        <label className='form-label'>Upload Project Image</label>
+                        <input 
+                        type="file"
+                        onChange={(e) => setImageURL(e.target.files[0])}
+                        accept="image/*"/>
+                    </div>
+                </div>
+
+                <div className='project-form-field-desc'>
+                    <label className='form-label'>Description</label>
+                    <input 
+                    type="text"
+                    onChange={(e) => setDescription(e.target.value)}
+                    value={description} />
+                </div>
+
+                <div className='form-submit--button'>
+                    <button>Create Project</button>
+                </div>
+
+                
                 {error && <div className='error'>{error}</div>}
             </form>
         </div>

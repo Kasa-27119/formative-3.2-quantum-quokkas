@@ -124,6 +124,7 @@ h1 {
     align-items: center;
     padding: 30px 20px;
     gap: 20px;
+    height: 70vh;
     /* Styling */
     background-color: pink;
 }
@@ -132,7 +133,48 @@ h1 {
     /* Layout */
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    gap: 2rem;
+}
+
+.project-form-field-group{
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-form-field-single{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.project-form .second-form-row{
+    margin-left: 8rem;
+}
+
+.project-form-field-desc{
+    display: flex;
+    flex-direction: column;
+    margin: 0 5rem;
+    width: 70%;
+}
+
+.project-form-field-single label, .project-form-field-desc label {
+    /* Layout */
+    font-size: 25px;
+}
+
+.project-form-field-single input, .project-form-field-desc input {
+    /* Layout */
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    height: 5vh;
 }
 
 .project-form-container {
@@ -282,7 +324,7 @@ h1 {
     height: 5vh;
 }
 
-.log-on-submit--button button {
+.form-submit--button button {
     /* Layout */
     font-size: var(--bodyFontSize);
     padding: 15px 25px;
@@ -298,7 +340,7 @@ h1 {
     cursor: pointer;
 }
 
-.log-on-submit--button button:hover {
+.form-submit--button button:hover {
     /* styling */
     background: #e0e0e0;
     box-shadow: inset 20px 20px 60px #9c9c9c,

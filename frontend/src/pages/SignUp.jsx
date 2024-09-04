@@ -48,7 +48,7 @@ const SignUp = () => {
                 {error && <div className='error'>Error</div>}
             </form>
 
-            <div className='log-on-submit--button'>
+            <div className='form-submit--button'>
                 <button disabled={isLoading} onClick={handleSubmit}>Sign Up</button>
             </div>
         </div>

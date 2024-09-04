@@ -55,7 +55,7 @@ const Login = () => {
                     {error && <div className='error'>{error}</div>}
                 </form>
 
-                <div className='log-on-submit--button'>
+                <div className='form-submit--button'>
                     <button disabled={isLoading} onClick={handleSubmit}>Login</button>
                 </div>
             </div>
