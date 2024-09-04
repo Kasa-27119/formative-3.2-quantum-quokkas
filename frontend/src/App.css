@@ -458,6 +458,58 @@ h1 {
     margin: 15px 0px;
 }
 
+.project-details .edit-modal{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.project-details .edit-modal label {
+    /* Layout */
+    font-size: 20px;
+    /* styling */
+    font-family: var(--bodyFontFamily);
+}
+
+.project-details .edit-modal input{
+    /* Layout */
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    height: 5vh;
+    /* styling */
+    border: 1px solid var(--secondaryButtonColor);
+}
+.project-details .edit-modal .button-edit-container {
+    /* Layout */
+    display: flex;
+    gap: 1rem;
+}
+.project-details .edit-modal .button-edit-container button{
+        /* Layout */
+        font-size: var(--bodyFontSize);
+        padding: 15px 25px;
+        border-radius: 5px;
+        border: none;
+        /* styling */
+        background-color: var(--secondaryColor);
+        -webkit-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.40);
+        -moz-box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.40);
+        box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.40);
+        color: white;
+        transition: all .5s ease;
+        cursor: pointer;
+}
+
+.project-details .edit-modal .button-edit-container button:hover{
+    /* styling */
+    background: #e0e0e0;
+    box-shadow: inset 20px 20px 60px #9c9c9c,
+        inset -20px -20px 60px #ffffff;
+    color: var(--primaryButtonColor);
+}
+
 /* Project Edit CSS Details End */
 
 /* login/signup Page CSS Start */
