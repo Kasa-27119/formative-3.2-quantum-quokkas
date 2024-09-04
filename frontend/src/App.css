@@ -555,7 +555,7 @@ h1 {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 30px;
+    padding: 120px 30px 30px 30px;
     /* styling */
     border-radius: 5px;
 }
