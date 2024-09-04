@@ -174,7 +174,9 @@ const ProjectDetails = ({project}) => {
                 
               </div>
 
-              <button onClick={handleNavigate}>See more</button>
+              <div className='see-more-container'>
+                <button onClick={handleNavigate}>See more</button>
+              </div>
               
             </div>
             

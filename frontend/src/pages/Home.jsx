@@ -63,13 +63,18 @@ const Home = () => {
                 </div>
             </div>
             <ProjectForm></ProjectForm>
-            <div className='projects'>
-                <button onClick={handleMyProjects} className='filter-button'>
+            <div className='filter-container'>
+                <h3 className='filter-header'>Filter Buttons</h3>
+                <div className='filter-buttons-container'>
+                    <button onClick={handleMyProjects} className='filter-button'>
                     My Projects
-                </button>
-                <button onClick={handleAllProjects} className='filter-button'>
+                    </button>
+                    <button onClick={handleAllProjects} className='filter-button'>
                     All Projects
-                </button>
+                    </button>
+                </div>
+            </div>
+            <div className='projects'>
                 {myProjects ? (projects && projects.map((project) => {
                     const user = JSON.parse(localStorage.getItem('user'))
                     const user_id = user.email
