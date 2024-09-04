@@ -286,22 +286,29 @@ h1 {
 .projects {
     /* Layout */
     max-width: 100%;
+    padding: 30px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 35px 35px;
 }
     
 .project-card-container {
     /* Layout */
-    padding: 10px;
+    /* padding: 10px; */
     /* Styling */
-    background-color: #5D5768;
+    border: 5px;
+    background-color: #e9fffc;
+    box-shadow: 5px 5px 10px #66a7a0,
+                -5px -5px 10px var(--secondaryButtonColor);
     
 }
 
 .project-card-container .project-image{
     /* Layout */
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
     display: block;
     /* Styling */
     background-color: #5D5768;
@@ -312,7 +319,21 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 10px;
+    padding: 10px;
+}
+
+.project-names-container h4 {
+    font-size: var(--subHeaderFontSize);
+    font-family: var(--headerFontFamily);
+    font-weight: var(--headerFontWeight);
+    color: var(--secondaryColor);
+}
+
+.project-names-container h6 {
+    font-size: 2em;
+    font-family: var(--headerFontFamily);
+    font-weight: var(--subHeaderFontWeight);
+    color: #F7567C;
 }
 
 .project-bottom-info-container {
@@ -320,6 +341,40 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 15px;
+}
+
+.project-info-container button {
+    /* Layout */
+    width: 40%;
+    margin: 30px 30% 10px 30%;
+    padding: 12px 16px;
+    /* Styling */
+    border: none;
+    border-radius: 5px;
+    background-color: var(--secondaryColor);
+    color: var(--primaryColor);
+    font-size: 1.2em;
+    font-family: var(--subHeaderFontFamily);
+    font-weight: var(--subHeaderFontWeight);
+    box-shadow: 5px 5px 10px #de4d70,
+                -5px -5px 10px #ff5f88;
+}
+
+.project-info-container button:hover {
+    opacity: 1;
+    background: var(--secondaryColor);
+    box-shadow: inset 5px 5px 10px #c64563,
+                inset -5px -5px 10px var(--secondaryColor);
+    transition: color 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+    cursor: pointer;
+}
+
+.project-bottom-left-container p {
+    font-size: 1.6em;
+    font-family: var(--subHeaderFontFamily);
+    font-weight: var(--subHeaderFontWeight);
+    color: var(--primaryButtonColor);
 }
 
 .edit-button, 
@@ -327,6 +382,14 @@ h1 {
     /* Layout */
     font-size: var(--secondaryIconFontSize);
     padding: 5px;
+    /* Styling */
+    color: var(--primaryButtonColor);
+}
+
+.edit-button:hover, 
+.delete-button:hover {
+    /* Styling */
+    color: var(--secondaryColor);
 }
 
 /* Project details CSS End */
