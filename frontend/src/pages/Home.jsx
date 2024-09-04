@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useProjectsContext } from '../hooks/useProjectContext'
+import { Binoculars } from 'react-bootstrap-icons'
+import{ EmojiSmile } from 'react-bootstrap-icons'
 
 // component imports
 import ProjectDetails from '../components/ProjectDetails';
@@ -44,15 +46,19 @@ const Home = () => {
     return (
         <div className='home'> 
             <div className='home-about'>
-                <h1>Main Header</h1>
-                <div className='home-about-img'></div>
+                <h1><span className='h1-2402'>2402</span> Web and UX Portfolio App</h1>
+                <div className='home-about-img-container'>
+                    <div className='home-about-img'></div>
+                </div>
+                
                 <div className='home-about-description'>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque beatae placeat numquam dolorem mollitia impedit, provident laudantium incidunt minus ad nisi magnam, labore facilis harum temporibus natus aliquam ducimus quae?
-                    In non labore perferendis, inventore sapiente velit et dolores cupiditate minima dignissimos. Ullam unde officia quos laudantium veniam, quisquam, voluptatem eveniet, sunt consectetur ratione dolorum aliquid ducimus! Eaque, facilis optio?
-                    Adipisci atque suscipit laboriosam, sit possimus, distinctio corrupti, minus alias nemo rerum id perferendis veniam. Consectetur, dolore fugiat. Excepturi, veniam. Suscipit dolores iste impedit ullam, hic quisquam animi obcaecati praesentium.
-                    </p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque beatae placeat numquam dolorem mollitia impedit, provident laudantium incidunt minus ad nisi magnam, labore facilis harum temporibus natus aliquam ducimus quae?
-                    In non labore perferendis, inventore sapiente velit et dolores cupiditate minima dignissimos. Ullam unde officia quos laudantium veniam, quisquam, voluptatem eveniet, sunt consectetur ratione dolorum aliquid ducimus! Eaque, facilis optio?
-                    Adipisci atque suscipit laboriosam, sit possimus, distinctio corrupti, minus alias nemo rerum id perferendis veniam. Consectetur, dolore fugiat. Excepturi, veniam. Suscipit dolores iste impedit ullam, hic quisquam animi obcaecati praesentium.
+                    <p>
+                        <span className='home-about-description-highlight'>About us as 2402 Web and UX class and our work! </span>
+                        We are full of talented desginers and coders and created a platform for people to share and appreciate each others work. We can be so hard on ourselves and even if we don't think what we have done is any good sharing it allows for improvement, inspiration and conquering that imposter syndrome. We know everyone knows what that is. THERE IS NO SUCH THING AS PERFECT <EmojiSmile className='about-icons'/>
+                    </p>
+                    <p>
+                        This Portfolio Website was coded and designed by Abbie, Kristen and Mere. In this website you can sign up, log in, post portfolio projects, view other posts from other users and also edit and delete your own posts.  
+                        <span className='home-about-description-highlight'> P.S Take a closer look at the photo hehe <Binoculars className='about-icons'/></span>
                     </p>
                 </div>
             </div>
