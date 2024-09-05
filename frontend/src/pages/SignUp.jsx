@@ -45,7 +45,7 @@ const SignUp = () => {
                 />
                 </div>
 
-                {error && <div className='error'>Error</div>}
+                {error && <div className='error'>{error}</div>}
             </form>
 
             <div className='form-submit--button'>
