@@ -256,6 +256,8 @@ h1 {
 /* Home CSS End */
 
 /* Project Form CSS Start */
+/* Project Form CSS Start */
+
 .create-project-container {
     /* Layout */
     display: flex;
@@ -263,26 +265,40 @@ h1 {
     justify-content: center;
     align-items: center;
     padding: 30px 20px;
-    gap: 20px;
-    height: 70vh;
+    gap: 2rem;
+    height: 80vh;
+    width: 100%;
     /* Styling */
     background-color: pink;
 }
 
 .project-form {
     /* Layout */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: 5rem;
+    row-gap: 1rem;
 }
 
-.project-form-field-group{
-    display: flex;
-    flex-direction: row;
-    gap: 5rem;
-    align-items: center;
-    justify-content: center;
+.field-one{
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.field-two{
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.field-three{
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+.field-four{
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+.field-five{
+    grid-area: 3 / 1 / 4 / 3;
 }
 
 .project-form-field-single{
@@ -290,32 +306,36 @@ h1 {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+    width: 100%;
 }
 
-.project-form .second-form-row{
-    margin-left: 8rem;
-}
-
-.project-form-field-desc{
-    display: flex;
-    flex-direction: column;
-    margin: 0 5rem;
-    width: 70%;
-}
-
-.project-form-field-single label, .project-form-field-desc label {
-    /* Layout */
+.project-form-field-single label{
     font-size: 25px;
+    font-family: var(--bodyFontFamily);
 }
 
-.project-form-field-single input, .project-form-field-desc input {
-    /* Layout */
+.project-form-field-single input {
     font-size: 20px;
     padding: 5px 10px;
     border-radius: 5px;
     border: none;
     height: 5vh;
+    width: 100%;
 }
+
+.project-form-container {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.project-form-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+} 
+/* Project Form CSS End */
+
 
 .project-form-container {
     /* Layout */
